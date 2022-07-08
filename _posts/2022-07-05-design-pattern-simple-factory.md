@@ -1,7 +1,7 @@
 ---
 title: 设计模式入门 - 简单工厂模式
 layout: article
-tags: java 设计模式
+tags: Java 设计模式
 ---
 
 顾名思义，工厂是生产一系列同类产品的地方。
@@ -36,6 +36,7 @@ tags: java 设计模式
 ```java
 
 interface ToyCar {
+    // 展示玩具信息
     void toyInfo();
 }
 
@@ -45,6 +46,7 @@ interface ToyCar {
 
 ```java
 
+// 汽车玩具
 class CarToys implements ToyCar {
     @Override
     public void toyInfo() {
@@ -52,10 +54,8 @@ class CarToys implements ToyCar {
     }
 }
 
-```
 
-```java
-
+// 卡车玩具
 class TruckToys implements ToyCar {
     @Override
     public void toyInfo() {
@@ -63,10 +63,8 @@ class TruckToys implements ToyCar {
     }
 }
 
-```
 
-```java
-
+// 巴士玩具
 class BusToys implements ToyCar {
     @Override
     public void toyInfo() {
