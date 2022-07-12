@@ -1,7 +1,7 @@
 ---
 title: "Java SE 文档"
 layout: article
-tags: java
+tags: Java
 ---
 
 ### Java SE 文档
