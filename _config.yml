@@ -20,9 +20,9 @@ text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
-title   : ZHUJZ 博客
+title   : 未工川野生博客
 description: > # this means to ignore newlines until "Language & timezone"
-  CV 日志
+  野生博客
 
 
 ## => Language and Timezone
