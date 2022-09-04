@@ -3,8 +3,7 @@ title: 函数式接口
 layout: article
 tags: Java 函数式接口
 ---
-
-自 JDK1.8 开始， Java 提供了函数式接口以及函数式编程。
+自 JK1.8 开始， Java 提供了函数式接口以及函数式编程。
 
 `函数式接口` 指的是只有一个抽象方法的接口。默认方法以及 `Object` 的所有公众的方法都不算在内。
 
@@ -25,7 +24,7 @@ public @interface FunctionalInterface {}
 
 ## 定义一个函数式接口
 
-通过函数式接口的要求我们可以知道，一个函数式接口必须有一个抽象方法，并且这个接口要添加 `@FunctionalInterface` 注解。
+通过函数式接口的要求可以知道，一个函数式接口必须有一个抽象方法，并且这个接口要添加 `@FunctionalInterface` 注解。
 
 那么，现在通过这个定义来创建一个简单的函数式接口：这个函数式接口接收一个字符串。
 
@@ -85,7 +84,7 @@ Receiver stringReceiver = arg -> System.out.println(arg);
 stringReceiver.receive("hello, functional!");
 ```
 
-然后，由于 `System.out.println(String x)` 方法正好也是接收一个字符串的方法，我们可以将这个**方法引用**作为 `Receiver` 中 `receive(String arg)` 的实现：
+然后，由于 `System.out.println(Object x)` 方法正好也符合接收一个字符串的方法，我们可以将这个**方法引用**作为 `Receiver` 中 `receive(String arg)` 的实现：
 
 ```java
 //1. 实现函数式接口
@@ -94,8 +93,29 @@ Receiver stringReceiver = System.out::println;
 stringReceiver.receive("hello, functional!");
 ```
 
+## 改进：接收任意类型参数
+
+由于上面的函数式接口只能接收参数为字符串类型，如果想要根据实际情况接收不同的参数，可以使用泛型作为参数来实现：
+
+```java
+@FunctionalInterface
+public interface Receiver<T> {
+    // 接收一个任意类型的参数
+    void receive(T arg);
+}
+```
+
+```java
+//1. 实现函数式接口
+Receiver<String> stringReceiver = System.out::println;
+Receiver<Integer> intReceiver = System.out::println;
+//2. 调用函数式接口
+stringReceiver.receive("hello, functional!");
+intReceiver.receive(8);
+```
+
 ## 总结
 
 在实现函数式接口的时候，我们可以通过 Lambda 对函数式接口的实现进行代码上的简化，解和 Lambda 以及现有类的方法，我们甚至可以不需要真正实现，只需要引用其他已经实现的方法作为函数式接口的实现即可。
 
-通过对函数式接口的定义、使用，可以看到函数式接口可以和 Lambda 表达式以及现有类的方法解和使用，使得代码更加灵活、简洁。
+通过对函数式接口的定义、使用，可以看到函数式接口可以和 Lambda 表达式以及现有类的方法解和使用，使得代码更加灵活、简洁。D
